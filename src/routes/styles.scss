@@ -1,0 +1,46 @@
+input[type='text'],
+button {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px solid rgba(65, 65, 65, 0.667);
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+  background: #1a1a1a;
+  color: #fff;
+
+  &:focus,
+  &:hover,
+  &:active {
+    border-color: rgba(80, 80, 80, 0.667);
+  }
+
+  &[readonly],
+  &[disabled],
+  &[aria-readonly],
+  &[aria-disabled] {
+    background: #3337;
+    color: #999;
+    border-color: rgba(65, 65, 65, 0.667);
+    cursor: not-allowed;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: #9af;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  outline: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: #abf;
+    text-decoration: underline;
+  }
+}
