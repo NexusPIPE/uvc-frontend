@@ -77,16 +77,17 @@ Same as above, but use `https://unpkg.com/@nexusuvc/frontend@^1.0.0/vanilla/inde
 ## Server Usage
 
 ```ts
-const validate = (privateKey: string, ticket: string)
-const response = await fetch(`https://uvc.nexuspipe.com/uvc/evaluate/${encodeURIComponent(privateKey)}/${encodeURIComponent(ticket)}`).then(r=>r.ok?r.json():{
-  success:false,
-  challenge_ts:"",
-  hostname:"",
-  'error-codes':[],
-  'internal-cause':new Error('Invalid response from UVC server'),
-  response: r,
-}).catch(e=>({success:false,challenge_ts:"",hostname:"",'error-codes':[],'internal-cause':e}));
-return response.success
+const validate = (privateKey: string, ticket: string) => {
+  const response = await fetch(`https://uvc.nexuspipe.com/uvc/evaluate/${encodeURIComponent(privateKey)}/${encodeURIComponent(ticket)}`).then(r=>r.ok?r.json():{
+    success:false,
+    challenge_ts:"",
+    hostname:"",
+    'error-codes':[],
+    'internal-cause':new Error('Invalid response from UVC server'),
+    response: r,
+  }).catch(e=>({success:false,challenge_ts:"",hostname:"",'error-codes':[],'internal-cause':e}));
+  return response.success
+};
 ```
 
 You can implement this in any language, but the above is a TypeScript example.
