@@ -16,6 +16,7 @@ The UVC SDK for SvelteKit, Svelte and Plain HTML.
         - [Event Listener](#event-listener)
         - [Global-Scope Callback](#global-scope-callback)
       - [Without a preprocessor](#without-a-preprocessor)
+    - [Options](#options)
   - [Server Usage](#server-usage)
 
 ## Installation
@@ -73,6 +74,10 @@ pnpm i @nexusuvc/frontend
 #### Without a preprocessor
 
 Same as above, but use `https://unpkg.com/@nexusuvc/frontend@^1.0.0/vanilla/index.js` instead of `@nexusuvc/frontend/vanilla`.
+
+### Options
+
+You can find the options type [here](https://github.com/NexusPIPE/uvc-frontend/blob/master/src/lib/sdk/Options.ts) under `export type UVCOptions = ...`
 
 ## Server Usage
 
