@@ -52,7 +52,7 @@ pnpm i @nexusuvc/frontend
   });
 </script>
 
-<nexus-uvc publicKey="<Your Public Key>" options={{}} id="your-uvc"></nexus-uvc>
+<nexus-uvc publicKey="<Your Public Key>" options="{}" id="your-uvc"></nexus-uvc>
 ```
 
 ##### Global-Scope Callback
@@ -67,7 +67,7 @@ pnpm i @nexusuvc/frontend
   }
 </script>
 
-<nexus-uvc publicKey="<Your Public Key>" options={{}} onCompleted="completedFunc"></nexus-uvc>
+<nexus-uvc publicKey="<Your Public Key>" options="{}" onCompleted="completedFunc"></nexus-uvc>
 ```
 
 #### Without a preprocessor
