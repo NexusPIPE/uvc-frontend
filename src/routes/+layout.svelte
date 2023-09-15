@@ -1,3 +1,5 @@
+<!-- boilerplate, ignore for minimal example -->
+
 <script lang="ts">
   import './styles.scss';
 </script>
