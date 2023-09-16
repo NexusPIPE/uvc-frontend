@@ -83,15 +83,15 @@ You can find the options type [here](https://github.com/NexusPIPE/uvc-frontend/b
 
 ```ts
 /** Validation Request Function */
-const performValidation = async (privateKey: string, ticket: string) => {
-  return await fetch(`https://uvc.nexuspipe.com/uvc/evaluate/${encodeURIComponent(privateKey)}/${encodeURIComponent(ticket)}`).then(r=>r.ok?r.json():{
+const performValidation = async (privateKey: string, ticket: string) =>
+  await fetch(`https://uvc.nexuspipe.com/uvc/evaluate/${encodeURIComponent(privateKey)}/${encodeURIComponent(ticket)}`).then(r=>r.ok?r.json():{
     success:false,
     challenge_ts:"",
     hostname:"",
     'error-codes':[],
     'internal-cause':new Error('Invalid response from UVC server'),
     response: r,
-  }).catch(e=>({success:false,challenge_ts:"",hostname:"",'error-codes':[],'internal-cause':e})) as {
+  }).catch(e=>({success:false,challenge_ts:"",hostname:"",'error-codes':[],'internal-cause':e})) as Promise<{
     success: false;
     challenge_ts: '';
     hostname: '';
@@ -103,11 +103,10 @@ const performValidation = async (privateKey: string, ticket: string) => {
     challenge_ts: number,
     hostname: string,
     'error-codes': [],
-  };
-};
+  }>;
 /** Validation Function */
 const validate = async (privateKey: string, ticket: string) =>
-  await performValidation(privateKey, ticket).success
+  (await performValidation(privateKey, ticket)).success;
 ```
 
 You can implement this in any language, but the above is a TypeScript example.
