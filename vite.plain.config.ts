@@ -2,9 +2,6 @@
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import {copyFileSync} from 'fs';
-
-copyFileSync('dist/index.d.ts','vanilla/index.d.ts')
 
 export default defineConfig({
   build: {
