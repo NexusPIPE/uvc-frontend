@@ -1,6 +1,17 @@
 {
   "name": "@nexusuvc/frontend",
   "version": "1.0.0",
+  "description": "NexusUVC Svelte & Plain HTML Widget",
+  "keywords": [
+    "nexuspipe",
+    "nexusuvc",
+    "uvc",
+    "captcha",
+    "widget",
+    "svelte",
+    "sveltekit",
+    "html"
+  ],
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && vite -c vite.plain.config.ts build && cp dist/index.d.ts vanilla/index.d.ts && npm run package",
@@ -29,6 +40,9 @@
     "!dist/**/*.spec.*",
     "vanilla"
   ],
+  "dependencies": {
+    "json5": "^2.2.3"
+  },
   "peerDependencies": {
     "svelte": "^4.0.0"
   },
@@ -48,8 +62,5 @@
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module",
-  "dependencies": {
-    "json5": "^2.2.3"
-  }
+  "type": "module"
 }
