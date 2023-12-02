@@ -1,6 +1,6 @@
 {
   "name": "@nexusuvc/frontend",
-  "version": "1.0.1",
+  "version": "1.0.2-pre1",
   "description": "NexusUVC Svelte & Plain HTML Widget",
   "keywords": [
     "nexuspipe",
@@ -12,6 +12,9 @@
     "sveltekit",
     "html"
   ],
+  "main": "./vanilla/index.cjs",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && vite -c vite.plain.config.ts build && cp dist/index.d.ts vanilla/index.d.ts && npm run package",
@@ -38,7 +41,11 @@
     "dist",
     "!dist/**/*.test.*",
     "!dist/**/*.spec.*",
-    "vanilla"
+    "vanilla",
+    "pnpm-lock.yaml",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "dependencies": {
     "json5": "^2.2.3"
@@ -47,7 +54,6 @@
     "svelte": "^4.0.0"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^2.1.1",
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.27.6",
     "@sveltejs/package": "^2.2.3",
