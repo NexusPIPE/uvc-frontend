@@ -72,5 +72,11 @@
   },
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "type": "module"
+  "type": "module",
+  "sideEffects": [
+    "vanilla/index.cjs",
+    "vanilla/index.iife.js",
+    "vanilla/index.js",
+    "vanilla/index.umd.cjs"
+  ]
 }
