@@ -48,8 +48,8 @@ pnpm i @nexusuvc/frontend
   import '@nexusuvc/frontend/vanilla';
 
   const uvc = document.querySelector('#your-uvc');
-  uvc.addEventListener('completed',e=>{
-    console.log('done with ticket',e.detail);
+  uvc.addEventListener('completed', e => {
+    console.log('done with ticket', e.detail);
   });
 </script>
 
@@ -63,12 +63,16 @@ pnpm i @nexusuvc/frontend
   import '@nexusuvc/frontend/vanilla';
 
   // the completed function must live in the global scope - it's body cannot be passed to the event, and it cannot be something like console.log that doesn't directly live in the global scope
-  window.completedFunc = (ticket)=>{
-    console.log('done with ticket',ticket);
-  }
+  window.completedFunc = ticket => {
+    console.log('done with ticket', ticket);
+  };
 </script>
 
-<nexus-uvc publicKey="<Your Public Key>" options="{}" onCompleted="completedFunc"></nexus-uvc>
+<nexus-uvc
+  publicKey="<Your Public Key>"
+  options="{}"
+  onCompleted="completedFunc"
+></nexus-uvc>
 ```
 
 #### Without a preprocessor
@@ -84,26 +88,45 @@ You can find the options type [here](https://github.com/NexusPIPE/uvc-frontend/b
 ```ts
 /** Validation Request Function */
 const performValidation = async (privateKey: string, ticket: string) =>
-  await fetch(`https://uvc.nexuspipe.com/uvc/evaluate/${encodeURIComponent(privateKey)}/${encodeURIComponent(ticket)}`).then(r=>r.ok?r.json():{
-    success:false,
-    challenge_ts:"",
-    hostname:"",
-    'error-codes':[],
-    'internal-cause':new Error('Invalid response from UVC server'),
-    response: r,
-  }).catch(e=>({success:false,challenge_ts:"",hostname:"",'error-codes':[],'internal-cause':e})) as Promise<{
-    success: false;
-    challenge_ts: '';
-    hostname: '';
-    'error-codes': number[];
-    'internal-cause'?: Error;
-    response?: Response;
-  } | {
-    success: true,
-    challenge_ts: number,
-    hostname: string,
-    'error-codes': [],
-  }>;
+  (await fetch(
+    `https://uvc.nexuspipe.com/uvc/evaluate/${encodeURIComponent(
+      privateKey,
+    )}/${encodeURIComponent(ticket)}`,
+  )
+    .then(r =>
+      r.ok
+        ? r.json()
+        : {
+            success: false,
+            challenge_ts: '',
+            hostname: '',
+            'error-codes': [],
+            'internal-cause': new Error('Invalid response from UVC server'),
+            response: r,
+          },
+    )
+    .catch(e => ({
+      success: false,
+      challenge_ts: '',
+      hostname: '',
+      'error-codes': [],
+      'internal-cause': e,
+    }))) as Promise<
+    | {
+        success: false;
+        challenge_ts: '';
+        hostname: '';
+        'error-codes': number[];
+        'internal-cause'?: Error;
+        response?: Response;
+      }
+    | {
+        success: true;
+        challenge_ts: number;
+        hostname: string;
+        'error-codes': [];
+      }
+  >;
 /** Validation Function */
 const validate = async (privateKey: string, ticket: string) =>
   (await performValidation(privateKey, ticket)).success;
