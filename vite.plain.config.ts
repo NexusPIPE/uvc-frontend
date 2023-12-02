@@ -1,4 +1,3 @@
-
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
@@ -9,12 +8,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/lib/index.ts'),
       name: 'UVC',
       fileName: 'index',
-      formats: [
-        'es',
-        'cjs',
-        'iife',
-        'umd',
-      ],
+      formats: ['es', 'cjs', 'iife', 'umd'],
     },
     outDir: 'vanilla',
   },

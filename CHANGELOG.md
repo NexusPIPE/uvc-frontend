@@ -1,8 +1,6 @@
 # Changelog
 
-
 ## v1.0.1
-
 
 ### 🚀 Enhancements
 
@@ -17,4 +15,3 @@
 ### ❤️ Contributors
 
 - Exponential-Workload <cc@aaathats3as.com>
-

@@ -23,10 +23,10 @@
   {#if !redrawing}
     <UVC
       publicKey={key ?? '2'.repeat(64)}
-      on:completed={(e) => {
+      on:completed={e => {
         accessToken = e.detail;
       }}
-      on:retry={(e) => {
+      on:retry={e => {
         accessToken = 'None (retrying)';
       }}
       {options}
@@ -54,8 +54,18 @@
 
 <style lang="scss">
   main {
-    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      'Open Sans',
+      'Helvetica Neue',
       sans-serif;
     .label {
       opacity: 0.5;

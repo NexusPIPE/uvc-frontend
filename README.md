@@ -34,7 +34,11 @@ pnpm i @nexusuvc/frontend
   import UVC from '@nexusuvc/frontend';
 </script>
 
-<UVC publicKey="<Your Public Key>" options={{}} on:completed={e=>console.log('done with ticket',e.detail)} />
+<UVC
+  publicKey="<Your Public Key>"
+  options={{}}
+  on:completed={e => console.log('done with ticket', e.detail)}
+/>
 ```
 
 ### Plain HTML

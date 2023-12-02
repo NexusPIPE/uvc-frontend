@@ -1,9 +1,3 @@
-<svelte:options
-  customElement={{
-    tag: 'nexus-uvc',
-  }}
-/>
-
 <!--
   we can render this as a component (using https://svelte.dev/docs#run-time-client-side-component-api) client-side at runtime
 -->
@@ -86,7 +80,7 @@
                   type: 'writeOptions',
                   ...wrapOptions(options),
                 },
-                _uvctest ? '*' : origin
+                _uvctest ? '*' : origin,
               );
               break;
             case 'completed':
@@ -118,14 +112,14 @@
           type: 'publicKey',
           key: publicKey,
         },
-        _uvctest ? '*' : 'https://uvc.nexuspipe.com'
+        _uvctest ? '*' : 'https://uvc.nexuspipe.com',
       );
   };
   onMount(async () => {
     mounted = true;
     while (!acked || !iframe) {
       if (iframe) dispatchPublicKey();
-      await new Promise((res) => setTimeout(res, 100));
+      await new Promise(res => setTimeout(res, 100));
     }
   });
   onDestroy(() => {
@@ -142,7 +136,7 @@
           type: 'writeOptions',
           ...wrapOptions(options),
         },
-        _uvctest ? '*' : 'https://uvc.nexuspipe.com'
+        _uvctest ? '*' : 'https://uvc.nexuspipe.com',
       );
     }
   }
@@ -158,12 +152,18 @@
           type: 'writeOptions',
           ...wrapped,
         },
-        _uvctest ? '*' : 'https://uvc.nexuspipe.com'
+        _uvctest ? '*' : 'https://uvc.nexuspipe.com',
       );
       lastOptions = wrapped;
     }
   }
 </script>
+
+<svelte:options
+  customElement={{
+    tag: 'nexus-uvc',
+  }}
+/>
 
 <svelte:window on:message={onMessage} />
 

@@ -1,2 +1,2 @@
 // boilerplate, ignore for minimal example
-export const prerender = true
+export const prerender = true;

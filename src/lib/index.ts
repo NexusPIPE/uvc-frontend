@@ -1,5 +1,9 @@
 import Frame from './sdk/Frame.svelte';
-import { Gradients as UVCGradients, i18n, type UVCOptions as UVCO } from './sdk/Options.js';
+import {
+  Gradients as UVCGradients,
+  i18n,
+  type UVCOptions as UVCO,
+} from './sdk/Options.js';
 
 /** The UVC Widget */
 export const UVC = Frame;
