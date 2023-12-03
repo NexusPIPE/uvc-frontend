@@ -1,6 +1,6 @@
 {
   "name": "@nexusuvc/frontend",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "NexusUVC Svelte & Plain HTML Widget",
   "keywords": [
     "nexuspipe",
