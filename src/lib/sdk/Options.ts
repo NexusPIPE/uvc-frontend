@@ -78,7 +78,7 @@ export type UVCOptions = {
   /** Should we use a slider? Defaults to true */
   slider: boolean;
   /** Target Image Hue - if null, will use default */
-  targetHue: boolean | null;
+  targetHue: number | null;
 };
 
 export const i18n = {
