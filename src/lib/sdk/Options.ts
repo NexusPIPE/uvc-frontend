@@ -1,12 +1,17 @@
+export type Colour =
+  | {
+      /** Gradient Left */
+      left: string;
+      /** Gradient Right */
+      right: string;
+      /** Checkmark colour */
+      check?: string | null;
+    }
+  | {
+      /** Hex colour */
+      hex: string;
+    };
 export const Gradients = {
-  // Blue: '--gradient-left: #007cff;--gradient-right: #56CCF2;--check: #2b77c1;',
-  // Green: '--gradient-left: #38ff00;--gradient-right: #56F27D;--check: #2bc142;',
-  // Aurora: '--gradient-left: #8b00ff;--gradient-right: #56F27D;--check: #2b5fc1;',
-  // Fire: '--gradient-left: #ffcb00;--gradient-right: #F25D56;--check: #c1712b;',
-  // Red: '--gradient-left: #ff3c00;--gradient-right: #F25D56;--check: #c12b2b;',
-  // Purple: '--gradient-left: #ff00cb;--gradient-right: #E656F2;--check: #c12b5f;',
-  // Lavender: '--gradient-left: #af00ff;--gradient-right: #E656F2;--check: #bc2bc1;',
-  // Nexus: '--gradient-left: #ff6302;--gradient-right: #ffc266;--check: #ffa820;',
   Blue: {
     left: '#007cff',
     right: '#56CCF2',
@@ -20,22 +25,22 @@ export const Gradients = {
   Aurora: {
     left: '#8b00ff',
     right: '#56F27D',
-    check: '#2b5fc1',
+    // check: '#2b5fc1',
   },
   Fire: {
     left: '#ffcb00',
     right: '#F25D56',
-    check: '#c1712b',
+    // check: '#c1712b',
   },
   Red: {
     left: '#ff3c00',
     right: '#F25D56',
-    check: '#c12b2b',
+    // check: '#c12b2b',
   },
   Purple: {
     left: '#ff00cb',
     right: '#E656F2',
-    check: '#c12b5f',
+    // check: '#c12b5f',
   },
   Lavender: {
     left: '#af00ff',
@@ -45,9 +50,10 @@ export const Gradients = {
   Nexus: {
     left: '#ff6302',
     right: '#ffc266',
-    check: '#ffa820',
+    // check: '#ffa820',
   },
-};
+} satisfies Record<string, Colour>;
+
 export type UVCOptions = {
   /** @deprecated Light mode is currently unsupported */
   dark: boolean;
@@ -61,20 +67,7 @@ export type UVCOptions = {
     SlideToVerify: string;
   }>;
   /** Colour Pallete used */
-  colours:
-    | {
-        /** Gradient Left */
-        left: string;
-        /** Gradient Right */
-        right: string;
-        /** Checkmark colour */
-        check: string;
-      }
-    | {
-        /** Hex colour */
-        hex: string;
-      }
-    | null;
+  colours: Colour | null;
   /** Should we use a slider? Defaults to true */
   slider: boolean;
   /** Target Image Hue - if null, will use default */

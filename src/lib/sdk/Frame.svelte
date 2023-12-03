@@ -5,8 +5,7 @@
   import { createEventDispatcher, onDestroy, onMount } from 'svelte';
   import type { SvelteWindowAttributes } from 'svelte/elements';
   import json5 from 'json5';
-  // @ts-ignore
-  import type { UVCOptions } from './Options';
+  import type { UVCOptions } from './Options.js';
   export let publicKey: string;
   export let options = {} as Partial<UVCOptions> | string;
   const wrapOptions = (options: Partial<UVCOptions> | string) => {
