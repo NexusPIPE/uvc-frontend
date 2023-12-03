@@ -55,7 +55,7 @@ export const Gradients = {
 } satisfies Record<string, Colour>;
 
 export type UVCOptions = {
-  /** @deprecated Light mode is currently unsupported */
+  /** If false, uses light theme */
   dark: boolean;
   /** Should we use a solid background? Defaults to true on safari, false everywhere else */
   solidBg: boolean;
