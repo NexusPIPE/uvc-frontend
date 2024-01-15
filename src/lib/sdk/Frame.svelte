@@ -22,7 +22,6 @@
     }
     return options;
   };
-  let ___windowType = null as unknown as SvelteWindowAttributes;
   let height: string = '75px';
   let mounted = false;
   let iframe: HTMLIFrameElement | null = null;
@@ -45,61 +44,63 @@
    * Use addEventListener('completed') for a more robust solution
    */
   export let onRetry = null as null | string;
-  const onMessage: (typeof ___windowType)['on:message'] /* HACK: this type should be exposed to end-users, but its not */ =
-    ({ origin, data }) => {
-      const matchesIframe = data.target ? data.target === id : true;
-      if (
-        (_uvctest
-          ? true
-          : origin === 'https://uvc.nexus' ||
-            origin === 'https://uvc.nexuspipe.com') &&
-        data.uvc &&
-        matchesIframe
-      ) {
-        // @ts-ignore
-        if (data.type === 'resize') {
-          height = `${data.height}px`;
-        } else if (data.type === 'ack_key') {
-          acked = true;
-          lastDispatchedKey = data.key;
-        } else {
-          const cCB = onCompleted
-            ? // @ts-ignore
-              (globalThis ?? window)[onCompleted as any]
-            : void 0;
-          const eCB = onRetry
-            ? // @ts-ignore
-              (globalThis ?? window)[onRetry as any]
-            : void 0;
-          switch (data.type) {
-            case 'requestOptions':
-              iframe!.contentWindow!.postMessage(
-                {
-                  uvc: true,
-                  type: 'writeOptions',
-                  ...wrapOptions(options),
-                },
-                _uvctest ? '*' : origin,
-              );
-              break;
-            case 'completed':
-              dispatch('completed', data.token);
-              if (cCB) cCB(data.token);
-              break;
-            case 'retry':
-              dispatch('retry');
-              if (eCB) eCB();
-              break;
-            case 'error':
-              console.error('got unknown error from uvc:', data);
-              break;
-            default:
-              console.warn('got unknown uvc data:', data);
-              break;
-          }
+  const onMessage: SvelteWindowAttributes['on:message'] = ({
+    origin,
+    data,
+  }) => {
+    const matchesIframe = data.target ? data.target === id : true;
+    if (
+      (_uvctest
+        ? true
+        : origin === 'https://uvc.nexus' ||
+          origin === 'https://uvc.nexuspipe.com') &&
+      data.uvc &&
+      matchesIframe
+    ) {
+      // @ts-ignore
+      if (data.type === 'resize') {
+        height = `${data.height}px`;
+      } else if (data.type === 'ack_key') {
+        acked = true;
+        lastDispatchedKey = data.key;
+      } else {
+        const cCB = onCompleted
+          ? // @ts-ignore
+            (globalThis ?? window)[onCompleted as any]
+          : void 0;
+        const eCB = onRetry
+          ? // @ts-ignore
+            (globalThis ?? window)[onRetry as any]
+          : void 0;
+        switch (data.type) {
+          case 'requestOptions':
+            iframe!.contentWindow!.postMessage(
+              {
+                uvc: true,
+                type: 'writeOptions',
+                ...wrapOptions(options),
+              },
+              _uvctest ? '*' : origin,
+            );
+            break;
+          case 'completed':
+            dispatch('completed', data.token);
+            if (cCB) cCB(data.token);
+            break;
+          case 'retry':
+            dispatch('retry');
+            if (eCB) eCB();
+            break;
+          case 'error':
+            console.error('got unknown error from uvc:', data);
+            break;
+          default:
+            console.warn('got unknown uvc data:', data);
+            break;
         }
       }
-    };
+    }
+  };
   let acked = false;
   const dispatchPublicKey = () => {
     if (iframe)
@@ -182,7 +183,7 @@
     <iframe
       src="{_uvctest ? '' : 'https://uvc.nexuspipe.com'}/v1/frame{demoCaptcha
         ? 'demo'
-        : ''}?host={location.hostname ?? location.host}&id={id}"
+        : ''}?host={location.host ?? location.hostname}&id={id}"
       frameborder="0"
       class="uvc"
       title="UVC"
