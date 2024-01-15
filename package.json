@@ -78,5 +78,14 @@
     "vanilla/index.iife.js",
     "vanilla/index.js",
     "vanilla/index.umd.cjs"
-  ]
+  ],
+  "homepage": "https://nexuspipe.com/uvc",
+  "repository": {
+    "url": "https://github.com/NexusPIPE/uvc-frontend",
+    "type": "git",
+    "directory": "."
+  },
+  "bugs": {
+    "url": "https://nexuspipe.com/contact/"
+  }
 }
