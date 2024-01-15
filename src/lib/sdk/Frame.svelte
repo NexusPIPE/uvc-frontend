@@ -182,7 +182,7 @@
     <iframe
       src="{_uvctest ? '' : 'https://uvc.nexuspipe.com'}/v1/frame{demoCaptcha
         ? 'demo'
-        : ''}?host={location.host ?? location.hostname}&id={id}"
+        : ''}?host={location.hostname ?? location.host}&id={id}"
       frameborder="0"
       class="uvc"
       title="UVC"
