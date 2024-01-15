@@ -1,8 +1,24 @@
-import { sveltekit } from '@sveltejs/kit/vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [sveltekit()],
+  build: {
+    lib: {
+      entry: resolve(__dirname, 'src/lib/index.ts'),
+      name: 'UVC',
+      fileName: 'index',
+      formats: ['es', 'cjs', 'iife', 'umd'],
+    },
+    outDir: 'vanilla',
+  },
+  plugins: [
+    svelte({
+      compilerOptions: {
+        customElement: true,
+      },
+    }),
+  ],
   esbuild: {
     banner: `
 //     ,,,                                
@@ -17,7 +33,7 @@ export default defineConfig({
 //              ,,,             ,,        \\_| \\_/\\___/_/\\_\\\\__,_|___/\\_|    \\___/\\_|   \\____/ 
 //                ,,,            ,,                                                           
 //                  ,,,           ,,      ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-//                     ,,,        ,,,     ┃ UVC Frontend Svelte Integration                     ┃
+//                     ,,,        ,,,     ┃ UVC Frontend Vanilla JS Integration                 ┃
 //                       ,,,,    ,,,      ┃   Source: https://github.com/NexusPIPE/uvc-frontend ┃
 //                          ,,,,      ,   ┃   NPM: https://npm.im/@nexusuvc/frontend            ┃
 //                             ,,,,,,,,   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

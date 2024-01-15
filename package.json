@@ -17,7 +17,7 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && vite -c vite.plain.config.ts build && npm run package",
+    "build": "vite build && vite -c vite.vanilla.config.ts build && npm run package",
     "preview": "vite preview",
     "package": "svelte-kit sync && svelte-package && cp dist/index.d.ts vanilla/index.d.ts && publint",
     "prepublishOnly": "npm run build",
@@ -33,8 +33,8 @@
     },
     "./vanilla": {
       "types": "./dist/index.d.ts",
-      "require": "./vanilla/index.cjs",
       "import": "./vanilla/index.js",
+      "require": "./vanilla/index.cjs",
       "svelte": "./vanilla/index.js",
       "default": "./vanilla/index.js"
     }
@@ -87,5 +87,6 @@
   },
   "bugs": {
     "url": "https://nexuspipe.com/contact/"
-  }
+  },
+  "readme": "README.md"
 }
