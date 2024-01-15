@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.2.1
+
+[compare changes](https://github.com/NexusPIPE/uvc-frontend/compare/v1.2.0...v1.2.1)
+
+### 🚀 Enhancements
+
+- SvelteKit v2 ([29460fb](https://github.com/NexusPIPE/uvc-frontend/commit/29460fb))
+
+### 🩹 Fixes
+
+- Use host over hostname ([3e2e32b](https://github.com/NexusPIPE/uvc-frontend/commit/3e2e32b))
+- Add urls to find the repo ([584c449](https://github.com/NexusPIPE/uvc-frontend/commit/584c449))
+- Allow importing .ts ([562d218](https://github.com/NexusPIPE/uvc-frontend/commit/562d218))
+- Rename vite.plain.config.ts to vite.vanilla.config.ts ([dd5b976](https://github.com/NexusPIPE/uvc-frontend/commit/dd5b976))
+
+### 🏡 Chore
+
+- Raise inline style threshold a bit ([38cbbcb](https://github.com/NexusPIPE/uvc-frontend/commit/38cbbcb))
+
+### ❤️ Contributors
+
+- Exponential-Workload <cc@aaathats3as.com>
+
 ## v1.2.0
 
 [compare changes](https://github.com/NexusPIPE/uvc-frontend/compare/v1.0.1...v1.2.0)
